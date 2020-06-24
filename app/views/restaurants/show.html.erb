@@ -1,0 +1,24 @@
+<div class="container">
+<h1> <%= @restaurant.name %></h1>
+<h2> <%= @restaurant.address %></h2>
+<h3> <%= @restaurant.category %></h3>
+
+<ul>
+  <% if @reviews.empty? %>
+    <%= "No Reviews yet..." %>
+    <% else %>
+    <% @reviews.each do |review| %>
+    <div>
+     <li>
+   <p>Review: <%=review.content %> </p>
+   </li>
+   <li>
+   <p>Rating: <%=review.rating %> </p>
+    </li>
+    </div>
+  <% end %>
+<% end %>
+</ul>
+  <%= link_to "Back", restaurants_path, class:"btn btn-success" %>
+  <%= link_to "Leave a review", new_restaurant_review_path(@restaurant), class:"btn btn-success" %>
+</div>
